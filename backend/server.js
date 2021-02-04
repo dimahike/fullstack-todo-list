@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 import userRouter from './routers/userRouter.js';
 import taskRouter from './routers/taskRouter.js';
+import { verify } from 'jsonwebtoken';
 
 dotenv.config();
 
@@ -20,6 +21,11 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/todo-list', {
 
 app.use('/api/users', userRouter);
 app.use('/api/tasks', taskRouter);
+
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/frontend/build/index.html')));
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
