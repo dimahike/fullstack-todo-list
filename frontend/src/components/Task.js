@@ -33,7 +33,7 @@ const Task = ({ task }) => {
     dispatch(changeStatus(index, task._id));
   };
   return (
-    <div className="row task">
+    <div className="row task cteator-task">
       <div className="row left">
         <div className="selector pointer">
           <div className="row">
@@ -75,7 +75,7 @@ const Task = ({ task }) => {
           <span>{task.email}</span>
         </div>
       </div>
-      <div className="row center">
+      <div className="row center right">
         <span>{task.text} </span>
       </div>
     </div>

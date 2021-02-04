@@ -52,13 +52,25 @@ footer {
   background-color: #203040;
   color: #fff;
 }
-
 .paper {
   margin: 5% 8%;
   padding: 3% 5%;
   background-color: #fff;
-  border-radius: 1rem;
+  border-radius: 1rem;  
 }
+
+@media screen and (max-width: 550px) {
+  .paper {
+    margin:0 ;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 0;  
+  }
+}
+
+
+
+
 
 /* Header */
 
