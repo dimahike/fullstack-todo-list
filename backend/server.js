@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import path from 'path';
 
 import userRouter from './routers/userRouter.js';
 import taskRouter from './routers/taskRouter.js';
-import { verify } from 'jsonwebtoken';
 
 dotenv.config();
 

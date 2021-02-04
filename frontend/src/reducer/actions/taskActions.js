@@ -14,7 +14,6 @@ import {
 export const taskList = ({ pageNumber = 1, sort = 'userName', order = 'lowest' }) => async (
   dispatch,
 ) => {
-  console.log({ pageNumber, sort, order });
   dispatch({
     type: TASK_LIST_REQUEST,
   });
