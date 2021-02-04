@@ -126,10 +126,7 @@ main span {
 
 ul {
   padding: 0%;
-  // margin: 0.5rem 0 0 0;
-  // border: 0.1rem solid #000;
   list-style-type: none;
-  // width: 12rem;
 }
 
 ul li {
@@ -141,6 +138,18 @@ ul li:hover {
   background: skyblue;
 }
 
+header ul li:hover {
+  background: #203040;
+  color: tomato;
+}
+
+a:hover {
+  color: tomato;
+}
+
+.pointer {
+  cursor: pointer;
+}
 
 /* Task  */
 

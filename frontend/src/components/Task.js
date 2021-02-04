@@ -35,7 +35,7 @@ const Task = ({ task }) => {
   return (
     <div className="row task">
       <div className="row left">
-        <div className="selector">
+        <div className="selector pointer">
           <div className="row">
             <div onClick={() => setShowSelecterStatus(!showSelecterStatus)}>
               <svg

@@ -14,12 +14,12 @@ const Header = ({ userInfo }) => {
 
   return (
     <header className="row space-btw">
-      <div className="align-items">
+      <div className="align-items pointer">
         <Link to="/" className="logo">
           TODO LIST
         </Link>
       </div>
-      <div>
+      <div className="pointer">
         {userInfo ? (
           <div className="dropdown">
             <div>
