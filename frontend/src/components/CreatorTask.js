@@ -37,7 +37,6 @@ const CreatorTask = () => {
 
   useEffect(() => {
     if (task) {
-      console.log('cheak effect', task);
       setName(task.userName);
       setEmail(task.email);
       setText(task.text);
@@ -57,7 +56,6 @@ const CreatorTask = () => {
     }
 
     if (successCreateTask) {
-      console.log('check effect 2');
       dispatch({ type: CREATE_TASK_RESET });
       setName('');
       setEmail('');
@@ -69,12 +67,19 @@ const CreatorTask = () => {
 
   const selector = (index) => {
     if (userInfo && userInfo.isAdmin) {
-      //  Admin
-      const convertIndex = index === 0 ? 1 : index === 1 ? 11 : statusIndex;
-      setStatusIndex(index);
-      setStatus(convertIndex);
+      if (task) {
+        //  Admin and Edit Task
+        const convertIndex = index === 0 ? 1 : index === 1 ? 11 : statusIndex;
+        setStatusIndex(index);
+        setStatus(convertIndex);
+      } else {
+        //  Admin and Create Taskk
+        const convertIndex = index === 0 ? 0 : index === 1 ? 10 : statusIndex;
+        setStatus(convertIndex);
+        setStatusIndex(index);
+      }
     } else {
-      // Users
+      // No Admin
       const convertIndex = index === 0 ? 0 : index === 1 ? 10 : statusIndex;
       setStatus(convertIndex);
       setStatusIndex(index);

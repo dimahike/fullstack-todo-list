@@ -9,11 +9,10 @@ const Task = ({ task, admin }) => {
   const dispatch = useDispatch();
   const [statusIndex, setStatusIndex] = useState(task.status);
 
-  // console.log(`task${task._id}`, task.status);
-
   useEffect(() => {
     let index =
-      task.status === 0 || task.status === 1 ? 0 : task.status === 1 || task.status === 11 ? 1 : 0;
+      task.status === 0 || task.status === 1 ? 0 : task.status === 10 || task.status === 11 ? 1 : 0;
+
     setStatusIndex(index);
   }, [task.status]);
 

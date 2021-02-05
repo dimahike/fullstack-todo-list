@@ -56,8 +56,6 @@ export const changeTask = (task) => async (dispatch, getState) => {
       },
     });
 
-    console.log('Changed status from reuest', data);
-
     dispatch({
       type: CHANGE_TASK_SUCCESS,
       payload: data,
@@ -72,9 +70,7 @@ export const changeTask = (task) => async (dispatch, getState) => {
 };
 
 export const createTask = (task) => async (dispatch, getState) => {
-  dispatch({ type: CHANGE_TASK_RESET });
   dispatch({ type: CREATE_TASK_REQUEST });
-  dispatch({ type: RESET_EDIT_TASK });
 
   console.log('task 1', task);
 
@@ -88,16 +84,20 @@ export const createTask = (task) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo?.token}`,
       },
     });
-    console.log('task 1', data);
+
     dispatch({
       type: CREATE_TASK_SUCCESS,
       payload: data,
     });
+    dispatch({ type: CHANGE_TASK_RESET });
+    dispatch({ type: RESET_EDIT_TASK });
   } catch (error) {
     dispatch({
       type: CREATE_TASK_FAIL,
       payload:
         error.response && error.response.data.message ? error.response.data.message : error.message,
     });
+    dispatch({ type: CHANGE_TASK_RESET });
+    dispatch({ type: RESET_EDIT_TASK });
   }
 };
