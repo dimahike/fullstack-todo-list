@@ -1,37 +1,3 @@
-// .creater-task{
-//   text-align: center;
-//   }
-  
-  
-//   .creater-task {
-//     button {
-//       background-color: orange;
-//       border-radius: 0.5rem;
-//       border: 0.2rem solid wheat;
-//       height: 3rem;
-//       color: white;
-//       font-weight: bold;
-//      }
-//      button:hover {
-//       background-color: wheat;
-//       border-radius: 0.5rem;
-//       border: 0.2rem solid orange;
-//       height: 3rem;
-//       color: black;
-//      }
-
-//      input,textarea, button  {
-//       width: 85%;
-//       padding: 0.5rem;
-//       max-width: 50rem;      
-//       margin: 1rem;      
-//     }
-
-//     .active {
-//       font-weight: bold;
-//     }
-//   }
-
 @media screen and (max-width: 550px) {
   .cteator-task {
     display: flex;
@@ -46,10 +12,27 @@
 
   
   .user-name {
-    width: 5rem;
+    width: 10rem;
+    word-wrap: break-word;
+    span {
+      font-weight: bold;
+    }
   }
   
   .email {
-    width: 12rem;
+
+    word-wrap: break-word;
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .text {
+    margin-top: 2rem;
+   
+    word-wrap: break-word;
+    span {
+      font-size: 1.8rem;
+    }
   }
   

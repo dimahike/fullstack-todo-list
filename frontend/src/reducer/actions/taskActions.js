@@ -3,12 +3,15 @@ import {
   TASK_LIST_REQUEST,
   TASK_LIST_SUCCESS,
   TASK_LIST_FAIL,
-  CHANGE_STATUS_REQUEST,
-  CHANGE_STATUS_SUCCESS,
-  CHANGE_STATUS_FAIL,
+  CHANGE_TASK_REQUEST,
+  CHANGE_TASK_SUCCESS,
+  CHANGE_TASK_FAIL,
   CREATE_TASK_REQUEST,
   CREATE_TASK_SUCCESS,
   CREATE_TASK_FAIL,
+  CHANGE_TASK_RESET,
+  CREATE_TASK_RESET,
+  RESET_EDIT_TASK,
 } from '../constants/taskListConstants.js';
 
 export const taskList = ({ pageNumber = 1, sort = 'userName', order = 'lowest' }) => async (
@@ -35,45 +38,57 @@ export const taskList = ({ pageNumber = 1, sort = 'userName', order = 'lowest' }
   }
 };
 
-export const changeStatus = (status, taskId) => async (dispatch, getState) => {
-  dispatch({ type: CHANGE_STATUS_REQUEST });
+export const changeTask = (task) => async (dispatch, getState) => {
+  dispatch({ type: CREATE_TASK_RESET });
+  dispatch({ type: RESET_EDIT_TASK });
+  dispatch({ type: CHANGE_TASK_RESET });
+
+  dispatch({ type: CHANGE_TASK_REQUEST });
 
   const {
     userSignin: { userInfo },
   } = getState();
 
   try {
-    const { data } = await Axios.put(
-      `/api/tasks/${taskId}/status`,
-      { status },
-      {
-        headers: {
-          Authorization: `Bearer ${userInfo?.token}`,
-        },
+    const { data } = await Axios.put(`/api/tasks/${task._id}`, task, {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`,
       },
-    );
+    });
 
     console.log('Changed status from reuest', data);
 
     dispatch({
-      type: CHANGE_STATUS_SUCCESS,
+      type: CHANGE_TASK_SUCCESS,
       payload: data,
     });
   } catch (error) {
     dispatch({
-      type: CHANGE_STATUS_FAIL,
+      type: CHANGE_TASK_FAIL,
       payload:
         error.response && error.response.data.message ? error.response.data.message : error.message,
     });
   }
 };
 
-export const createTask = (task) => async (dispatch) => {
+export const createTask = (task) => async (dispatch, getState) => {
+  dispatch({ type: CHANGE_TASK_RESET });
   dispatch({ type: CREATE_TASK_REQUEST });
+  dispatch({ type: RESET_EDIT_TASK });
+
+  console.log('task 1', task);
+
+  const {
+    userSignin: { userInfo },
+  } = getState();
 
   try {
-    const { data } = await Axios.post(`/api/tasks`, task);
-
+    const { data } = await Axios.post(`/api/tasks`, task, {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    });
+    console.log('task 1', data);
     dispatch({
       type: CREATE_TASK_SUCCESS,
       payload: data,

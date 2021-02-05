@@ -1,8 +1,9 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import {
-  changeStatusReducer,
+  changeTaskReducer,
   createTaskReducer,
+  editTaskReducer,
   taskListReducer,
 } from './reducers/taskReducers.js';
 import { userRegisterReducer, userSigninReducer } from './reducers/userReaducers.js';
@@ -17,10 +18,11 @@ const initialState = {
 
 const reducer = combineReducers({
   taskList: taskListReducer,
-  changeStatus: changeStatusReducer,
+  changeTask: changeTaskReducer,
   createTask: createTaskReducer,
   userSignin: userSigninReducer,
   userRegister: userRegisterReducer,
+  editTask: editTaskReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

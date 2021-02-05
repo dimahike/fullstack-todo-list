@@ -136,6 +136,14 @@ main span {
   flex: 3 1 75rem;
 }
 
+.full-width {
+  width: 100% !important;
+}
+
+.font-w-b {
+  font-weight: bold;
+}
+
 ul {
   padding: 0%;
   list-style-type: none;
@@ -172,7 +180,7 @@ a:hover {
   padding: 1rem 0.5rem;
 }
 .left > div {
-  margin: 0  1rem;
+  margin: 1rem  1rem;
 }
 
 
@@ -181,10 +189,12 @@ a:hover {
 
 
 .selected-status {
-  margin-left: 0.5rem;
   padding: 0.5rem 0.7rem;
-  width: 8rem;
-  text-align: center;
+  width: 9rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 1.8rem;
 }
 
 .show{
@@ -197,10 +207,12 @@ a:hover {
 
 .processing {
   background-color: tomato;
+  width: 12rem;
 }
 
 .complete {
   background-color: yellowgreen;
+  width: 12rem;
 }
 
 /* Button  */
@@ -208,6 +220,7 @@ a:hover {
 button {
   background-color: #f8f8f8;
   cursor: pointer;
+
 }
 
 button, input, select, textarea {
@@ -215,7 +228,6 @@ button, input, select, textarea {
     border-radius: .5rem;
     border: .1rem solid #a4a4a4;
     font-size: 1.6rem;
-
 }
 
 input:hover, 

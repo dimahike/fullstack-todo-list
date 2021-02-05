@@ -13,19 +13,19 @@ const HomePage = () => {
   const [selectedPage, setSelectedPage] = useState();
   const [sortBy, setSortBy] = useState('userName');
   const [orderDicrIncr, setOrderDicrIncr] = useState('');
-  const { loading: loadingStatus, success: successStatus, error: errorStatus } = useSelector(
-    (state) => state.changeStatus,
-  );
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const { loading, tasks, page, pages, error } = useSelector((state) => state.taskList);
   const { success: successCreateTask } = useSelector((state) => state.createTask);
-  const { success: successChangeStatus } = useSelector((state) => state.changeStatus);
+  const { success: successChangeStatus } = useSelector((state) => state.changeTask);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(taskList({ pageNumber: selectedPage, sort: sortBy, order: orderDicrIncr }));
-  }, [dispatch, successCreateTask, successChangeStatus, selectedPage, sortBy, orderDicrIncr]);
+  }, [dispatch, successCreateTask, selectedPage, sortBy, orderDicrIncr, successChangeStatus]);
 
   const selectPage = (page) => {
     setSelectedPage(page);
@@ -38,6 +38,7 @@ const HomePage = () => {
   const decrIncrOrder = React.useCallback((decrIncr) => {
     setOrderDicrIncr(decrIncr);
   }, []);
+
   return (
     <div className="paper">
       <div>
@@ -51,18 +52,15 @@ const HomePage = () => {
             decrIncr={decrIncrOrder}
           />
         </div>
-        {loadingStatus && <LoadingBox />}
-        {errorStatus ? (
-          <MessageBox variant="danger">{errorStatus}</MessageBox>
-        ) : (
-          successStatus && <MessageBox variant="success">{successStatus.message}</MessageBox>
-        )}
+
         {loading ? (
           <LoadingBox />
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          tasks.map((task) => <Task key={task._id} task={task} />)
+          tasks.map((task) => (
+            <Task key={task._id} task={task} admin={userInfo && userInfo.isAdmin} />
+          ))
         )}
         <Pagination page={page} pages={pages} selectPage={selectPage} />
       </div>
