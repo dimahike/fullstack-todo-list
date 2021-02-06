@@ -7,7 +7,7 @@ const Pagination = ({ pages, page, selectPage }) => {
     <div className="pagination row center">
       {[...Array(pages).keys()].map((numPage) => (
         <div
-          className={numPage + 1 === page ? 'active' : ''}
+          className={`pointer ${numPage + 1 === page ? 'active' : ''}`}
           key={`PageNum${numPage + 1}`}
           onClick={() => selectPage(numPage + 1)}>
           {numPage + 1}

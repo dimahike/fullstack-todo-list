@@ -43,7 +43,7 @@ const HomePage = () => {
     <div className="paper">
       <div>
         <CreatorTask />
-        <div className="row space-btw">
+        <div className="row space-btw mt-4">
           <h1>Task list</h1>
           <SortPopup
             onClickSortPopup={onSelectSortPopup}
