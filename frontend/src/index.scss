@@ -38,12 +38,12 @@ header {
   grid-area: header;
   background-color: #203040;
   color: #fff;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 main {
   grid-area: main;
-  padding: 1rem;
+  padding: 0;
   background-color: #dedee0;
 }
 
@@ -51,6 +51,9 @@ footer {
   grid-area: footer;
   background-color: #203040;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .paper {
   margin: 5% 8%;
@@ -62,7 +65,7 @@ footer {
 @media screen and (max-width: 550px) {
   .paper {
     margin:0 ;
-    padding: 0;
+    padding: 1rem 0;
     background-color: #fff;
     border-radius: 0;  
   }

@@ -7,6 +7,9 @@ import SigninPage from './pages/SigninPage';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
+
+  const year = new Date().getFullYear();
+
   const { userInfo } = userSignin;
   return (
     <BrowserRouter>
@@ -17,7 +20,7 @@ function App() {
           <Route path="/register" component={RegisterPage} />
           <Route path="/" component={HomePage} exact />
         </main>
-        <footer>footer</footer>
+        <footer> © {year} TODO LIST</footer>
       </div>
     </BrowserRouter>
   );
