@@ -1,0 +1,28 @@
+/* Selector status  */
+
+.selected-status {
+  padding: 0.5rem 0.7rem;
+  width: 9rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.show{
+  display: none;
+}
+
+.rotared {
+  transform: rotate(180deg);
+}
+
+.processing {
+  background-color: tomato;
+  width: 12rem;
+}
+
+.complete {
+  background-color: yellowgreen;
+  width: 12rem;
+}

@@ -10,7 +10,6 @@ import {
   CREATE_TASK_SUCCESS,
   CREATE_TASK_FAIL,
   CHANGE_TASK_RESET,
-  CREATE_TASK_RESET,
   RESET_EDIT_TASK,
 } from '../constants/taskListConstants.js';
 
@@ -39,10 +38,6 @@ export const taskList = ({ pageNumber = 1, sort = 'userName', order = 'lowest' }
 };
 
 export const changeTask = (task) => async (dispatch, getState) => {
-  dispatch({ type: CREATE_TASK_RESET });
-  dispatch({ type: RESET_EDIT_TASK });
-  dispatch({ type: CHANGE_TASK_RESET });
-
   dispatch({ type: CHANGE_TASK_REQUEST });
 
   const {
@@ -60,6 +55,8 @@ export const changeTask = (task) => async (dispatch, getState) => {
       type: CHANGE_TASK_SUCCESS,
       payload: data,
     });
+    dispatch({ type: CHANGE_TASK_RESET });
+    dispatch({ type: RESET_EDIT_TASK });
   } catch (error) {
     dispatch({
       type: CHANGE_TASK_FAIL,
@@ -71,8 +68,6 @@ export const changeTask = (task) => async (dispatch, getState) => {
 
 export const createTask = (task) => async (dispatch, getState) => {
   dispatch({ type: CREATE_TASK_REQUEST });
-
-  console.log('task 1', task);
 
   const {
     userSignin: { userInfo },
@@ -97,7 +92,5 @@ export const createTask = (task) => async (dispatch, getState) => {
       payload:
         error.response && error.response.data.message ? error.response.data.message : error.message,
     });
-    dispatch({ type: CHANGE_TASK_RESET });
-    dispatch({ type: RESET_EDIT_TASK });
   }
 };

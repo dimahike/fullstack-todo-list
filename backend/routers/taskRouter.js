@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 import { data } from '../data.js';
 import Task from '../models/taskModel.js';
-import { decodeJWT, isAuth } from '../utils.js';
+import { decodeJWT, isAdmin, isAuth } from '../utils.js';
 
 const taskRouter = express.Router();
 
@@ -79,23 +79,20 @@ taskRouter.post(
 taskRouter.put(
   '/:id',
   isAuth,
+  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const taskId = req.params.id;
 
     const task = await Task.findById(taskId);
 
-    if (req.user && req.user.isAdmin) {
-      task.status = req.body.status;
-      task.userName = req.body.userName || task.userName;
-      task.email = req.body.email || task.email;
-      task.text = req.body.text || task.text;
+    task.status = req.body.status;
+    task.userName = req.body.userName || task.userName;
+    task.email = req.body.email || task.email;
+    task.text = req.body.text || task.text;
 
-      const updatedTask = await task.save();
+    const updatedTask = await task.save();
 
-      res.send({ message: 'Task Updated', task: updatedTask });
-    } else {
-      res.status(403).send({ message: 'You dont have an access to edit a task' });
-    }
+    res.send({ message: 'Task Updated', task: updatedTask });
   }),
 );
 

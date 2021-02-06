@@ -5,7 +5,7 @@ import SortPopup from '../components/SortPopup';
 import Task from '../components/Task';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import CreatorTask from '../components/CreatorTask';
+import CreatorTask from '../components/TaskForm';
 import Pagination from '../components/Pagination';
 import { sortItems } from '../data.js';
 

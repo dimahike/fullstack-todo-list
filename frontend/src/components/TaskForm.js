@@ -11,7 +11,9 @@ import {
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
 
-const CreatorTask = () => {
+import './TaskForm.scss';
+
+const TaskForm = () => {
   const dispatch = useDispatch();
   const { task } = useSelector((state) => state.editTask);
   const { userInfo } = useSelector((state) => state.userSignin);
@@ -53,10 +55,7 @@ const CreatorTask = () => {
           setStatusIndex(0);
           break;
       }
-    }
-
-    if (successCreateTask) {
-      dispatch({ type: CREATE_TASK_RESET });
+    } else {
       setName('');
       setEmail('');
       setText('');
@@ -92,11 +91,6 @@ const CreatorTask = () => {
     dispatch({ type: RESET_EDIT_TASK });
     dispatch({ type: CREATE_TASK_RESET });
     dispatch({ type: CHANGE_TASK_RESET });
-    setName('');
-    setEmail('');
-    setText('');
-    setStatusIndex(0);
-    setStatus(0);
   };
 
   const submitHandler = (e) => {
@@ -122,16 +116,6 @@ const CreatorTask = () => {
         }),
       );
     }
-
-    dispatch({ type: RESET_EDIT_TASK });
-    dispatch({ type: CREATE_TASK_RESET });
-    dispatch({ type: CHANGE_TASK_RESET });
-
-    setName('');
-    setEmail('');
-    setText('');
-    setStatusIndex(0);
-    setStatus(0);
   };
 
   return (
@@ -241,4 +225,4 @@ const CreatorTask = () => {
   );
 };
 
-export default CreatorTask;
+export default TaskForm;

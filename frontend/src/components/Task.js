@@ -21,7 +21,7 @@ const Task = ({ task, admin }) => {
   };
 
   return (
-    <div className="task cteator-task">
+    <div className="task">
       <div className="row space-btw">
         <div className="row left">
           {admin && (
