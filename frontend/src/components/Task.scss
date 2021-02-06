@@ -9,23 +9,29 @@
   }
 }
 
+.task {
+  border-bottom: 0.2rem solid gainsboro;
+  padding: 1rem 0.5rem;
+}
+.left > div {
+  margin: 1rem  1rem;
+}
 
   
-  .user-name {
-    width: 10rem;
-    word-wrap: break-word;
-    span {
-      font-weight: bold;
-    }
+.user-name {
+   width: 10rem;
+  word-wrap: break-word;
+  span {
+  font-weight: bold;
   }
+}
   
-  .email {
-
-    word-wrap: break-word;
-    span {
-      font-weight: bold;
-    }
+ .email {
+  word-wrap: break-word;
+  span {
+    font-weight: bold;
   }
+}
 
   .text {
     margin-top: 2rem;

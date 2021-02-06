@@ -22,28 +22,29 @@ const Task = ({ task, admin }) => {
 
   return (
     <div className="task cteator-task">
-      <div className="row left">
-        {admin && (
-          <div>
-            <label />
-            <a href="#edit">
-              <button className=" primary" onClick={editTask}>
-                <i class="fas fa-edit"></i>
-              </button>
-            </a>
+      <div className="row space-btw">
+        <div className="row left">
+          {admin && (
+            <div>
+              <a href="#edit">
+                <button className=" primary" onClick={editTask}>
+                  <i class="fas fa-edit"></i>
+                </button>
+              </a>
+            </div>
+          )}
+          <div className="selector">
+            <button className={`row ${statuses[statusIndex]}`}>
+              {(task.status === 1 || task.status === 11) && <i class="fas fa-edit"></i>}
+              {statuses[statusIndex]}
+            </button>
           </div>
-        )}
 
-        <div className="selector">
-          <button className={`row ${statuses[statusIndex]}`}>
-            {(task.status === 1 || task.status === 11) && <i class="fas fa-edit"></i>}
-            <span>{statuses[statusIndex]}</span>
-          </button>
+          <div className="user-name">
+            <span>{task.userName}</span>
+          </div>
         </div>
 
-        <div className="user-name">
-          <span>{task.userName}</span>
-        </div>
         <div className="email">
           <span>{task.email}</span>
         </div>

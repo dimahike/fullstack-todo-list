@@ -55,27 +55,6 @@ footer {
   justify-content: center;
   align-items: center;
 }
-.paper {
-  margin: 5% 8%;
-  padding: 3% 5%;
-  background-color: #fff;
-  border-radius: 1rem;  
-}
-
-@media screen and (max-width: 550px) {
-  .paper {
-    margin:0 ;
-    padding: 1rem 0.4rem;
-    background-color: #fff;
-    border-radius: 0;  
-  }
-}
-
-
-
-
-
-/* Header */
 
 header p:hover {
   color: orange;
@@ -85,18 +64,9 @@ main span {
   font-size: 1.5rem;
 }
 
-
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  /* justify-content: space-between; */
-  align-items: center;
-}
 .row {
   display: flex;
   flex-wrap: wrap;
-  // justify-content: space-between;
   align-items: center;
 }
 
@@ -174,22 +144,24 @@ a:hover {
   cursor: pointer;
 }
 
-/* Task  */
-
-
-
-.task {
-  border-bottom: 0.2rem solid gainsboro;
-  padding: 1rem 0.5rem;
+.paper {
+  margin: 5% 8%;
+  padding: 3% 5%;
+  background-color: #fff;
+  border-radius: 1rem;  
 }
-.left > div {
-  margin: 1rem  1rem;
+
+@media screen and (max-width: 550px) {
+  .paper {
+    margin:0 ;
+    padding: 1rem 0.4rem;
+    background-color: #fff;
+    border-radius: 0;  
+  }
 }
 
 
 /* Selector status  */
-
-
 
 .selected-status {
   padding: 0.5rem 0.7rem;
@@ -274,7 +246,6 @@ button.small{
   z-index: 1;
   background-color: #203040;
   margin: 0;
-  // margin-top: 0.1rem;
   border-radius: 0.5rem;
 }
 
@@ -282,14 +253,28 @@ button.small{
 display: block;
 }
 
+/* Form */
 
-
-
-/* Table  */
-
-.table {
-  width: 100%;
-  /* border-collapse: collapse; */
+.form {
+  max-width: 60rem;
+  margin: 0 auto;
 }
 
+.form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
 
+.form label {
+  margin: 1rem 0;
+}
+
+.signin,.register  {
+  a {
+    color:  #f0c040;
+  }
+  a:hover {
+    color: tomato;
+  }
+} 
