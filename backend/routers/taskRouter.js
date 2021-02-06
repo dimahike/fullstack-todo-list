@@ -22,7 +22,7 @@ taskRouter.get(
 
     const sort = { [sortTasks]: sortOrder };
 
-    const count = await Task.count({});
+    const count = await Task.countDocuments({});
 
     const tasks = await Task.find({})
       .populate()
