@@ -20,6 +20,7 @@ const HomePage = () => {
   const { loading, tasks, page, pages, error } = useSelector((state) => state.taskList);
   const { success: successCreateTask } = useSelector((state) => state.createTask);
   const { success: successChangeStatus } = useSelector((state) => state.changeTask);
+  const { task: taskEdit } = useSelector((state) => state.editTask);
 
   const dispatch = useDispatch();
 
@@ -31,18 +32,18 @@ const HomePage = () => {
     setSelectedPage(page);
   };
 
-  const onSelectSortPopup = React.useCallback((sort) => {
+  const onSelectSortPopup = (sort) => {
     setSortBy(sort);
-  }, []);
+  };
 
-  const decrIncrOrder = React.useCallback((decrIncr) => {
+  const decrIncrOrder = (decrIncr) => {
     setOrderDicrIncr(decrIncr);
-  }, []);
+  };
 
   return (
     <div className="paper">
       <div>
-        <CreatorTask />
+        <CreatorTask task={taskEdit} />
         <div className="row space-btw mt-4">
           <h1>Task list</h1>
           <SortPopup

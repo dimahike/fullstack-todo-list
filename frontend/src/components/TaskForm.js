@@ -13,9 +13,9 @@ import MessageBox from './MessageBox';
 
 import './TaskForm.scss';
 
-const TaskForm = () => {
+const TaskForm = React.memo(function ({ task }) {
   const dispatch = useDispatch();
-  const { task } = useSelector((state) => state.editTask);
+
   const { userInfo } = useSelector((state) => state.userSignin);
 
   const {
@@ -223,6 +223,6 @@ const TaskForm = () => {
       </div>
     </form>
   );
-};
+});
 
 export default TaskForm;
