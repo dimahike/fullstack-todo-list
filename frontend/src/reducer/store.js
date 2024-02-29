@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import {withExtraArgument} from 'redux-thunk';
 import {
   changeTaskReducer,
   createTaskReducer,
@@ -27,6 +27,6 @@ const reducer = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, initialState, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(reducer, initialState, composeEnhancers(applyMiddleware(withExtraArgument())));
 
 export default store;
